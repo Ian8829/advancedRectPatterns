@@ -141,6 +141,13 @@
     return Wrapper;
   }
 
+  function MyEventComponent({ on, event }) {
+    const props = {[ event ]: on };
+    return (
+        <button {...props}>The {event} event</button>
+    );
+  }
+
   const MyToggle = withToggle(({ on, toggle }) => (
     <button onClick={toggle}>
       { on ? 'on' : 'off' }
@@ -157,7 +164,13 @@
             <Toggle.Button />
             <Toggle.Off>The button is off</Toggle.Off>
           </div>
+          <hr/>
           <MyToggle/>
+          <hr/>
+          <MyEventComponent
+            event="onClick"
+            on={e => alert(e.type)}
+          />
         </Toggle>
     )
   }
