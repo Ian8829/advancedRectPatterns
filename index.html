@@ -150,12 +150,13 @@
         : null;
     });
 
-  const MyToggle = withToggle(
-    ({ toggle: { on, toggle } }) => (
-    <button onClick={toggle}>
-      { on ? 'on' : 'off' }
-    </button>
-  ));
+  const MyToggle = ({ toggle: {on, toggle}}) => (
+      <button onClick={toggle}>
+        { on ? 'on' : 'off' }
+      </button>
+  );
+
+  const MyToggleWrapper = withToggle(MyToggle);
 
   function App() {
     return (
@@ -168,7 +169,7 @@
             <Toggle.Off>The button is off</Toggle.Off>
           </div>
           <hr/>
-          <MyToggle/>
+          <MyToggleWrapper/>
           <hr/>
           <MyEventComponent
             event="onClick"
@@ -177,7 +178,7 @@
         </Toggle>
     )
   }
-  App.displayName = 'MyApp';
+//  App.displayName = 'MyApp';
 
   /*
    *
